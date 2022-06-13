@@ -1,8 +1,9 @@
 import { Card, Container, Col, Row } from 'react-bootstrap';
 import React, { useEffect, useState } from "react"
 import * as Constants from '../constants/constants.js'
+import { withTheme } from 'styled-components';
 
-export const MovieCard = () => {
+export const PopularMovies = () => {
 
     const [movies, setMovies] = useState([])
 
@@ -24,13 +25,27 @@ export const MovieCard = () => {
 
     console.log(movies)
 
+    const cardStyle = {
+        padding: '1rem',
+        width: '15rem',
+        color: 'white',
+        background: '#001C54',
+        borderRadius: '8px',
+    }
+
+    const cardImgStyle = {
+        borderRadius: '8px',
+        width: '100',
+        height: '200'
+    }
+
     return (
         <div>
             <Container className='p-4'>
                     <Row>
                         {movies.map(movie =>
-                            <Card style={{ width: '15rem' }} className="m-2">
-                                <Card.Img variant="top" src={ `${Constants.POSTER_URL}${movie.poster_path}` } width="100" height="200" />
+                            <Card style={ cardStyle } className="m-2">
+                                <Card.Img variant="top" src={ `${Constants.POSTER_URL}${movie.poster_path}` } style={ cardImgStyle } />
                                 <Card.Body>
                                     <Card.Title>{movie.original_title}</Card.Title>
                                 </Card.Body>

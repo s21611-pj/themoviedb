@@ -1,13 +1,13 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components/Header.js';
-import { MovieCard } from './components/MovieCard.js'
+import { PopularMovies } from './components/PopularMovies.js'
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <MovieCard />
+      <PopularMovies />
     </div>
   );
 }
