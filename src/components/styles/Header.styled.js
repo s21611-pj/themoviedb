@@ -10,6 +10,8 @@ export const StyledHeader = styled.header`
       padding-left: 15px;
       margin-right: auto;
       margin-left: auto;
+      background-color: #001C54;
+      /* height: 400%; */
     }
 
 
@@ -18,6 +20,7 @@ export const StyledHeader = styled.header`
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
+      background-color: #001C54;
     }
 
     a {
@@ -34,6 +37,7 @@ export const StyledHeader = styled.header`
     .brand a {
       font-weight: 700;
       font-size: 1.5rem;
+      
     }
 
     .nav-links {
@@ -42,11 +46,13 @@ export const StyledHeader = styled.header`
       list-style: none;
       display: flex;
       align-items: center;
+      background-color: #001C54;
     }
 
     .nav-links li {
       display: inline-block;
       margin-right: 30px;
+      background-color: #001C54;
     }
 
     .nav-links li:last-child {

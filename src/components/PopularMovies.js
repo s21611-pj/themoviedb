@@ -2,6 +2,8 @@ import { Card, Container, Col, Row } from 'react-bootstrap';
 import React, { useEffect, useState } from "react"
 import * as Constants from '../constants/constants.js'
 import { withTheme } from 'styled-components';
+import { StyledPopularMovies } from './styles/PopulaMovies.styled.js';
+import { SearchBar } from './SearchBar.js';
 
 export const PopularMovies = () => {
 
@@ -14,7 +16,7 @@ export const PopularMovies = () => {
             })
             .then(data => {
                 setMovies(data.results)
-                console.log(data.results)
+                // console.log(data.results)
             })
     }
 
@@ -23,7 +25,7 @@ export const PopularMovies = () => {
     }, [])
 
 
-    console.log(movies)
+    // console.log(movies)
 
     const cardStyle = {
         padding: '1rem',
@@ -36,23 +38,29 @@ export const PopularMovies = () => {
     const cardImgStyle = {
         borderRadius: '8px',
         width: '100',
-        height: '200'
+        height: '200',
+        background: '#001C54'
     }
 
     return (
-        <div>
+        
+        <>
+        <SearchBar setFiltredMovies={() => setMovies()} />
+        <StyledPopularMovies>
             <Container className='p-4'>
                     <Row>
-                        {movies.map(movie =>
+                        {movies?.map(movie =>
                             <Card style={ cardStyle } className="m-2">
                                 <Card.Img variant="top" src={ `${Constants.POSTER_URL}${movie.poster_path}` } style={ cardImgStyle } />
-                                <Card.Body>
-                                    <Card.Title>{movie.original_title}</Card.Title>
+                                <Card.Body style={{background: '#001C54'}}>
+                                    <Card.Title style={{background: '#001C54'}}>{movie.original_title} </Card.Title>
                                 </Card.Body>
                             </Card>
                         )}
                     </Row>
             </Container>
-        </div >
+        </StyledPopularMovies>
+        </>
+
     )
 }

@@ -4,4 +4,78 @@
   padding: 0;
   margin: 0;
   background-color: #072F7F;
+  /* height: 100vh; */
+  width: 100%;
+  
+}
+
+.add-page {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  margin: 'auto';
+  position: absolute;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  /* width: 100%; */
+  /* height: 100%; */
+}
+
+
+.add-content {
+  padding: 50px 0;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.add-content .input-wrapper input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.25rem;
+}
+
+.results {
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  /* height: 100vh; */
+}
+
+.results{
+  width: 100%;
+}
+
+.results li {
+  list-style: none;
+  background-color: #001C54
+ 
+}
+
+.result-card {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.result-card .poster-wrapper img,
+.filler-poster {
+  width: 75px;
+  height: 113px;
+  background-color: #dbdada;
+  border-radius: 5px;
+  margin-right: 15px;
+  display: block;
+  color: transparent;
 }
