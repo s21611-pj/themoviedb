@@ -16,7 +16,6 @@ export const PopularMovies = () => {
             })
             .then(data => {
                 setMovies(data.results)
-                // console.log(data.results)
             })
     }
 
@@ -24,8 +23,6 @@ export const PopularMovies = () => {
         fetchData()
     }, [])
 
-
-    // console.log(movies)
 
     const cardStyle = {
         padding: '1rem',
@@ -45,7 +42,7 @@ export const PopularMovies = () => {
     return (
         
         <>
-        <SearchBar setFiltredMovies={() => setMovies()} />
+        <SearchBar setFiltredMovies={(data) => setMovies(data)} />
         <StyledPopularMovies>
             <Container className='p-4'>
                     <Row>
