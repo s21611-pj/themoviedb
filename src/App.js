@@ -12,7 +12,7 @@ function App() {
         <Header />
         <PopularMovies />
         <Routes>
-          <Route path="/movie" element={<Movie />} />
+          <Route path="/movie" element={ <Movie /> } />
         </Routes>
       </Router>
     </div>

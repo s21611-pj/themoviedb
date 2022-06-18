@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import * as Constants from '../constants/constants.js'
+import React, { useState } from "react";
+import * as Constants from '../constants/constants.js';
 import '../App.css';
 
 
 export function SearchBar({ setFiltredMovies }) {
     const [query, setQuery] = useState("");
-    const [results, setResults] = useState([]);
 
     const onChange = (e) => {
         e.preventDefault();

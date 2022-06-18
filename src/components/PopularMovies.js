@@ -1,6 +1,6 @@
-import { Card, Container, Col, Row } from 'react-bootstrap';
-import React, { useEffect, useState } from "react"
-import * as Constants from '../constants/constants.js'
+import { Card, Container, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import * as Constants from '../constants/constants.js';
 import { StyledPopularMovies } from './styles/PopulaMovies.styled.js';
 import { SearchBar } from './SearchBar.js';
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ export const PopularMovies = () => {
         height: '200',
         background: '#001C54'
     }
-    
+
     const linkStyle = {
         color: 'yellow',
         textDecoration: 'none',
@@ -47,15 +47,15 @@ export const PopularMovies = () => {
         background: '#001C54'
     }
 
-    const redirect = () => {
-        alert("dupa")
-    }
-
-    let navigate = useNavigate(); 
-    const routeChange = () =>{ 
-      let path = '/movie'; 
-      navigate(path);
-    }
+    let navigate = useNavigate();
+    const routeChange = (movieId) => {
+        let path = '/movie';
+        navigate(path, {
+            state: {
+                id: movieId
+            }
+        });
+    };
 
     return (
 
@@ -65,11 +65,10 @@ export const PopularMovies = () => {
                 <Container className='p-4'>
                     <Row>
                         {movies?.map(movie =>
-                            <Card onClick={routeChange} style={cardStyle} className="m-2">
+                            <Card onClick={() => { routeChange(movie.id) }} style={cardStyle} className="m-2" key={movie.id}>
                                 <Card.Img variant="top" src={`${Constants.POSTER_URL}${movie.poster_path}`} style={cardImgStyle} />
                                 <Card.Body style={{ background: '#001C54' }}>
                                     <Card.Title style={{ background: '#001C54' }}>{movie.original_title} </Card.Title>
-                                    {/* <Card.Link href={`${Constants.TMDB_MOVIE_URL}` + movie.id} style={linkStyle}>[Go to TMDB]</Card.Link> */}
                                 </Card.Body>
                             </Card>
                         )}
