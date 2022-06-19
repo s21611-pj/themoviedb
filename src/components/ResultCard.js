@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Constants from '../constants/constants.js';
 
 
 
@@ -9,7 +10,7 @@ export const ResultCard = ({ movie }) => {
                 {movie.poster_path ? (
                     <div style={{color: 'white', background: 'green'}}>
                     <img
-                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                        src={`${Constants.POSTER_URL}${movie.poster_path}`}
                         alt={`${movie.title} Poster`}
                     />
                     <p>{movie.title}</p>

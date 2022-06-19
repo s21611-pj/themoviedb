@@ -51,7 +51,11 @@ export function Movie() {
                         <br></br>
                         <p style={{ fontSize: '25px', color: 'orange' }}>{movie.title}</p>
                         <p>
-                            <img src={`${Constants.POSTER_URL}${movie.poster_path}`} alt="Poster Unavailable" width="150"></img>
+                            <img 
+                                src={`${Constants.POSTER_URL}${movie.poster_path}`} 
+                                alt={`${movie.title} Poster`} 
+                                width="150" 
+                            />
                         </p>
                         <p>{movie.overview}</p>
                         <p>Release date: <br></br>{movie.release_date}</p>
