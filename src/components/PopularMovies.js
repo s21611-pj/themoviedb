@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const PopularMovies = () => {
 
     const [movies, setMovies] = useState([])
+    let navigate = useNavigate();
 
     const fetchData = () => {
         fetch(`${Constants.API_URL}${Constants.POPULAR_MOVIES_ENDPOINT}${Constants.API_KEY}`)
@@ -40,14 +41,6 @@ export const PopularMovies = () => {
         background: '#001C54'
     }
 
-    const linkStyle = {
-        color: 'yellow',
-        textDecoration: 'none',
-        fontSize: '18px',
-        background: '#001C54'
-    }
-
-    let navigate = useNavigate();
     const routeChange = (movieId) => {
         let path = '/movie';
         navigate(path, {
