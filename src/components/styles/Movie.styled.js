@@ -3,11 +3,10 @@ import styled from 'styled-components';
 export const StyledMovie = styled.div`
     position: absolute;
     top: 5%;
-    left: 33%;
+    left: 3%;
     margin-top: -50px;
     margin-left: -50px;
-    width: 700px;
-    /* height: 100px; */
+    width: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
