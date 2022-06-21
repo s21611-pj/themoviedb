@@ -9,7 +9,7 @@ export function SearchBar({ setFiltredMovies }) {
     const onChange = (e) => {
         e.preventDefault();
         setQuery(e.target.value);
-        let dataQuery = e.target.value == 0 ?
+        let dataQuery = e.target.value === 0 ?
             `${Constants.API_URL}${Constants.POPULAR_MOVIES_ENDPOINT}${Constants.API_KEY}` :
             `${Constants.API_URL}${Constants.MOVIE_SERACH_ENDPOINT}${Constants.API_KEY}&query=${e.target.value}`;
         fetch(
