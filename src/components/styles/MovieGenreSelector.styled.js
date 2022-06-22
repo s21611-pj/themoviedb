@@ -8,7 +8,7 @@ export const StyledMovieGenreSelector = styled.div`
         color: black;
         background: salmon;
         outline: none;
-        width: 200px;
+        width: 300px;
         height: 40px;
     }
     option {

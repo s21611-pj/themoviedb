@@ -171,7 +171,7 @@ export function Movie() {
                         />
                     : null
                 }
-
+                
             </div>
 
         </div>

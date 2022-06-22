@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { SearchBar } from './SearchBar.js';
 import { PopularMovies } from './PopularMovies.js';
 import { MovieGenreSelector } from './MovieGenreSelector.js';
+import { Card, Container, Row } from 'react-bootstrap';
 
 export const MovieByGenreSearchEngine = () => {
 
     let navigate = useNavigate();
-
 
     const movieStyle = {
         zIndex: 999,
@@ -29,8 +29,6 @@ export const MovieByGenreSearchEngine = () => {
             <button type="button" onClick={() => navigate(-1)} style={{ background: 'yellow', marginTop: '20px' }}>Return to main page</button>
 
             <MovieGenreSelector />
-
-            {/* <PopularMovies /> */}
 
         </div>
     )
