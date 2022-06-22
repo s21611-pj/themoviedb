@@ -19,8 +19,6 @@ export function Header() {
         paddingRight: '3px',
     }
 
-    
-
     return (
         <StyledHeader>
             <div className="container">

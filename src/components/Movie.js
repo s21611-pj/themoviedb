@@ -61,7 +61,6 @@ export function Movie() {
     }
     useEffect(() => { fetchTrailerData() }, [])
 
-
     const movieStyle = {
         zIndex: 999,
         position: 'fixed',
@@ -72,7 +71,6 @@ export function Movie() {
         color: 'white',
     }
 
-    // styledGallery
     const galleryStyle = {
         position: 'absolute',
         left: '35%',
@@ -146,7 +144,7 @@ export function Movie() {
 
             <div style={galleryStyle}>
                 <h5>Gallery</h5>
-                <Container >
+                <Container>
                     <Row>
                         {
                             images.backdrops && images.backdrops.length > 0 ?
@@ -171,9 +169,7 @@ export function Movie() {
                         />
                     : null
                 }
-                
             </div>
-
         </div>
     )
 }

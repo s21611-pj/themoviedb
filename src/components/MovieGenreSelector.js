@@ -1,22 +1,17 @@
 import { StyledMovieGenreSelector } from './styles/MovieGenreSelector.styled.js';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as Constants from '../constants/constants.js';
 import { useNavigate } from "react-router-dom";
-import { SearchBar } from './SearchBar.js';
-import { PopularMovies } from './PopularMovies.js';
 import { Card, Container, Row } from 'react-bootstrap';
 
 export const MovieGenreSelector = () => {
-
-
     const [movies, setMovies] = useState([])
-    // const [sortedMovies, setSortedMovies] = useState([])
-
     const [value, setValue] = useState([])
 
     let navigate = useNavigate();
 
     const fetchData = () => {
+        showSortButtons();
         fetch(`${Constants.API_URL}discover/movie${Constants.API_KEY}&with_genres=${value}`)
             .then(response => {
                 return response.json()
@@ -25,6 +20,13 @@ export const MovieGenreSelector = () => {
                 console.log(data.results)
                 setMovies(data.results)
             })
+    }
+
+    function showSortButtons() {
+        let sortButtons = document.getElementsByClassName("sortButton");
+        for(let i = 0; i < sortButtons.length; i++) {
+            sortButtons[i].style.display = 'inline';
+        }
     }
 
     const cardStyle = {
@@ -43,6 +45,13 @@ export const MovieGenreSelector = () => {
         background: '#001C54'
     }
 
+    const buttonStyle = {
+        background: 'salmon',
+        marginTop: '20px',
+        display: 'none',
+        fontSize: '18px'
+    }
+
     const routeChange = (movieId) => {
         let path = '/movie';
         navigate(path, {
@@ -51,19 +60,6 @@ export const MovieGenreSelector = () => {
             }
         });
     };
-
-    function comparator(a, b) {
-        const bandA = a.release_date;
-        const bandB = b.release_date;
-
-        let comparison = 0;
-        if (bandA > bandB) {
-            comparison = 1;
-        } else if (bandA < bandB) {
-            comparison = -1;
-        }
-        return comparison;
-    }
 
     const moviesComponent = movies?.map(movie => {
         return <Card onClick={() => { routeChange(movie.id) }} style={cardStyle} className="m-2" key={movie.id}>
@@ -78,6 +74,13 @@ export const MovieGenreSelector = () => {
     function handleSort() {
         const sortedMovies = [...movies].sort((a, b) => {
             return a.release_date > b.release_date ? 1 : -1
+        })
+        setMovies(sortedMovies)
+    }
+
+    function handleSortDesc() {
+        const sortedMovies = [...movies].sort((a, b) => {
+            return a.release_date < b.release_date ? 1 : -1
         })
         setMovies(sortedMovies)
     }
@@ -107,12 +110,12 @@ export const MovieGenreSelector = () => {
                 <option value="10752">War</option>
                 <option value="37">Western</option>
             </select>
-            <h4>Selected Genre Id: {value}</h4>
-
-            <button type="button" style={{ background: 'salmon', marginTop: '20px' }} onClick={fetchData}>Search movie by genre</button>
-
             <div>
-                <button type="button" style={{ background: 'salmon', marginTop: '20px' }} onClick={handleSort}>Sort</button>
+                <button type="button" style={{ background: 'salmon', marginTop: '20px', fontSize: '20px'}} onClick={fetchData}>Search movie by genre</button>
+            </div>
+            <div>
+                <button className="sortButton" type="button" style={buttonStyle} onClick={handleSort}>Sort movies by release date ascending</button>
+                <button className="sortButton" type="button" style={buttonStyle} onClick={handleSortDesc}>Sort movies by release date descending</button>
                 <Container className='p-4'>
                     <Row>
                         {moviesComponent}
