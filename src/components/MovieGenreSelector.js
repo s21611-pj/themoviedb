@@ -10,6 +10,8 @@ export const MovieGenreSelector = () => {
 
 
     const [movies, setMovies] = useState([])
+    // const [sortedMovies, setSortedMovies] = useState([])
+
     const [value, setValue] = useState([])
 
     let navigate = useNavigate();
@@ -63,6 +65,23 @@ export const MovieGenreSelector = () => {
         return comparison;
     }
 
+    const moviesComponent = movies?.map(movie => {
+        return <Card onClick={() => { routeChange(movie.id) }} style={cardStyle} className="m-2" key={movie.id}>
+            <Card.Img variant="top" src={`${Constants.POSTER_URL}${movie.poster_path}`} style={cardImgStyle} />
+            <Card.Body style={{ background: '#001C54' }}>
+                <Card.Title style={{ background: '#001C54' }}>{movie.original_title} </Card.Title>
+                <Card.Text style={{ background: '#001C54' }}>{movie.release_date}</Card.Text>
+            </Card.Body>
+        </Card>
+    })
+
+    function handleSort() {
+        const sortedMovies = [...movies].sort((a, b) => {
+            return a.release_date > b.release_date ? 1 : -1
+        })
+        setMovies(sortedMovies)
+    }
+
 
     return (
         <StyledMovieGenreSelector>
@@ -93,18 +112,10 @@ export const MovieGenreSelector = () => {
             <button type="button" style={{ background: 'salmon', marginTop: '20px' }} onClick={fetchData}>Search movie by genre</button>
 
             <div>
-                {/* <button type="button" style={{ background: 'salmon', marginTop: '20px' }} onClick={sortMoviesByReleaseDate(movies)}>Sort</button> */}
+                <button type="button" style={{ background: 'salmon', marginTop: '20px' }} onClick={handleSort}>Sort</button>
                 <Container className='p-4'>
                     <Row>
-                        {movies?.map(movie =>
-                            <Card onClick={() => { routeChange(movie.id) }} style={cardStyle} className="m-2" key={movie.id}>
-                                <Card.Img variant="top" src={`${Constants.POSTER_URL}${movie.poster_path}`} style={cardImgStyle} />
-                                <Card.Body style={{ background: '#001C54' }}>
-                                    <Card.Title style={{ background: '#001C54' }}>{movie.original_title} </Card.Title>
-                                    <Card.Text style={{ background: '#001C54' }}>{movie.release_date}</Card.Text>
-                                </Card.Body>
-                            </Card>
-                        )}
+                        {moviesComponent}
                     </Row>
                 </Container>
             </div>
