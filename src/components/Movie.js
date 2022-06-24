@@ -46,7 +46,6 @@ export function Movie() {
                 return response.json()
             })
             .then(data => {
-                console.log(data)
                 setImages(data)
             })
     }
@@ -58,7 +57,6 @@ export function Movie() {
                 return response.json()
             })
             .then(data => {
-                console.log(data.results)
                 setTrailer(data)
             })
     }
