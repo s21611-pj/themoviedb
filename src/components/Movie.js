@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { RateMovieForm } from './RateMovieForm.js';
 import * as Constants from '../constants/constants.js';
 import * as Utils from '../utils/utils.js';
 import { StyledMovie } from './styles/Movie.styled.js';
@@ -12,6 +13,8 @@ export function Movie() {
     const [credit, setCredit] = useState({})
     const [images, setImages] = useState([])
     const [trailer, setTrailer] = useState([])
+    
+
     const location = useLocation();
     let navigate = useNavigate();
 
@@ -60,6 +63,8 @@ export function Movie() {
             })
     }
     useEffect(() => { fetchTrailerData() }, [])
+
+
 
     const movieStyle = {
         zIndex: 999,
@@ -134,6 +139,11 @@ export function Movie() {
                                 <p>Actors: <br></br>{Utils.getMovieMainActors(credit.cast)}</p>
                                 : null
                         }
+                        <p>
+                            <h5 style = {{background: '#001C54'}}>Vote movie here</h5>
+                            <RateMovieForm movieId={movie.id}/>
+                            
+                        </p>
                         <p><a href={Constants.TMDB_MOVIE_URL + movie.id}>Click here to show movie info in TMDB</a></p>
                         <p>
                             <button type="button" onClick={() => navigate(-1)} style={{ background: 'yellow' }}>Return to searching</button>
@@ -171,5 +181,6 @@ export function Movie() {
                 }
             </div>
         </div>
+
     )
 }
