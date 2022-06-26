@@ -71,7 +71,7 @@ export const RateMovieForm = (props) => {
                 {errors.movieRate?.type === "second" && <p style={errorStyle}>Empty value provided</p>}
                 {errors.movieRate?.type === "third" && <p style={errorStyle}>Value must be in range 0.5-10</p>}
                 {errors.movieRate?.type === "fourth" && <p style={errorStyle}>Value must be multiplication of 0.5</p>}
-                <input style={inputStyle} type="submit" />
+                <input style={inputStyle} type="submit" value="Send Movie Rate" />
             </form>
         </div>
     );
